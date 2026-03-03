@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <title>IT-System-Tracking-Intern-Homework-Task</title>
   <meta name= "viewport" content="width=device-width, intial-scale=1.0">
-  //Basic start and title
+  <!-- ========================= -->
+  <!-- Google Tag Manager (HEAD) -->
+  <!-- Loads GTM container on page start -->
+  <!-- ========================= -->
   <script>
     (function (w,d,s,l,i) {
       //Creating datalayer
@@ -28,4 +31,117 @@
       firstScript.parentNode.insertBefore(gtmScript, firstScript);
     })(window, document, 'script', 'dataLayer', 'GTM-(ID)');
   </script>
+  <!-- End Google Tag Manager -->
+  <!-- ====================== -->
+  <!-- Basic Page styling -->
+  <!-- ====================== -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      text-align: center;
+      padding 50px;
+    }
+    .product-card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      display: inline-block;
+      max-width: 350px;
+    }
+    .product-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+    button {
+      background-color: #0066ff;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #0047b3;
+    }
+  </style>
 </head>
+
+<body>
+<!-- ====================== -->
+<!-- Google Tag Manager (NOSCRIPT) -->
+<!-- Fallback tracking for users without JavaScript -->
+<!-- ====================== -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-?"
+    height="0"
+    width="0"
+    style="display:none;visibility:hidden">
+  </iframe>
+</noscript>  
+
+  <h1>Impact Store</h1>
+  <p>Exclusive Limited Offer</p>
+<!-- ====================== -->
+<!-- Product Section -->
+<!-- Contains product data that we will track -->
+<!-- ====================== -->
+  <div class="product-card">
+    
+      <!-- Product image -->
+      <img src="https://via.placeholder.com/350x250" alt="Impact Sneakers">
+
+      <!-- Product Name (Used for tracking) -->
+      <h2 id="product name">Impact Sneakers</h2>
+
+      <!-- Product Price (Used for tracking) -->
+      <div class "price">
+          $<span id="product-price">29.99</span>
+      </div>
+
+      <!-- Add to cart Button -->
+      <!-- Required ID for tracking -->
+      <button id="add-to-cart-click" onclick="handleAddToCart()">
+          Add to Cart
+      </button>
+  </div>
+<!-- ====================== -->
+<!-- Tracking Logic -->
+<!-- Pushes event to dataLayer when button is clicked -->
+<!-- ====================== -->
+<script>
+function handleAddToCart() {
+    // Extract product information from the page
+    var productName = document.getElementById("product-name").innerText;
+    var productPrice = document.getElementById("product-price").innerText;
+    // Ensure dataLayer exists
+    window.dataLayer = window.dataLayer || [];
+    // Push custom event to dataLayer
+    // GTM will listen to this event and send it to GA4
+    dataLayer.push({
+      event: "custom_add_to_cart_click",   // Custom event name for GTM trigger
+      value: parseFloat(productPrice),     // Dynamic product price
+      currency: "USD",                     // Currency parameter
+      item_name: productName               // Dynamic product name
+    });
+    // Optional visual confirmation
+    alert("Product added to cart!");
+    // Console confirmation for debugging
+    console.log("Event pushed to dataLayer:", {
+      event: "custom_add_to_cart_click",
+      value: productPrice,
+      item_name: productName
+   });
+}
+</script>
+</body>
+</html>
+  
