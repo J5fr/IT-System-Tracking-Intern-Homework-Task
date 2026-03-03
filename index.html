@@ -1,1 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IT-System-Tracking-Intern-Homework-Task</title>
+  <meta name= "viewport" content="width=device-width, intial-scale=1.0">
+  //Basic start and title
+  <script>
+    (function (w,d,s,l,i) {
+      //Creating datalayer
+      w[l] = w[1] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      // Now Creating GTM script elements
+      var firstScript = d.getElementByTagName(s)[0];
+      var gtmScript = d.createElement(s);
+      var datalayerParam = l !== 'dataLayer' ? '&l=' + l : '';
 
+      gtmScript.async = true;
+      gtmScript.src =
+          'https://www.googletagmanager.com/gtm.js?=id' +
+          i +
+          dataLayerParam;
+
+      // Insert GTM script into page
+      firstScript.parentNode.insertBefore(gtmScript, firstScript);
+    })(window, document, 'script', 'dataLayer', 'GTM-(ID)');
+  </script>
+</head>
