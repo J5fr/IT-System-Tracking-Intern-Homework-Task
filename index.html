@@ -2,25 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Impact Brands - Intern Task</title>
+  <title>Impact Store</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ========================= -->
-  <!-- Google Tag Manager (HEAD) -->
+  <!-- Google Analytics GA4 -->
   <!-- ========================= -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CEK689H970"></script>
   <script>
-    (function(w,d,s,l,i){
-      w[l]=w[l]||[];
-      w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
-      var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),
-          dl=l!='dataLayer'?'&l='+l:'';
-      j.async=true;
-      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-      f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NXMJ935F');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CEK689H970');
   </script>
-  <!-- End Google Tag Manager -->
 
   <!-- ========================= -->
   <!-- Basic Page Styling -->
@@ -72,17 +66,6 @@
 
 <body>
 
-<!-- ========================= -->
-<!-- Google Tag Manager (NOSCRIPT) -->
-<!-- ========================= -->
-<noscript>
-  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXMJ935F"
-    height="0"
-    width="0"
-    style="display:none;visibility:hidden">
-  </iframe>
-</noscript>
-
 <h1>Impact Store</h1>
 <p>Exclusive Limited Offer</p>
 
@@ -90,10 +73,19 @@
 <!-- Product Section -->
 <!-- ========================= -->
 <div class="product-card">
+
   <img src="https://via.placeholder.com/350x250" alt="Impact Sneakers">
+
   <h2 id="product-name">Impact Sneakers</h2>
-  <div class="price">$<span id="product-price">29.99</span></div>
-  <button id="add-to-cart-click" onclick="handleAddToCart()">Add to Cart</button>
+
+  <div class="price">
+    $<span id="product-price">29.99</span>
+  </div>
+
+  <button id="add-to-cart-click" onclick="handleAddToCart()">
+    Add to Cart
+  </button>
+
 </div>
 
 <!-- ========================= -->
@@ -101,13 +93,12 @@
 <!-- ========================= -->
 <script>
 function handleAddToCart() {
+
   var productName = document.getElementById("product-name").innerText;
   var productPrice = document.getElementById("product-price").innerText;
 
-  // Įsitikink, kad dataLayer egzistuoja
   window.dataLayer = window.dataLayer || [];
 
-  // Pushing event to GTM
   dataLayer.push({
     event: "custom_add_to_cart_click",
     value: parseFloat(productPrice),
@@ -116,6 +107,7 @@ function handleAddToCart() {
   });
 
   alert("Product added to cart!");
+
   console.log("Event pushed to dataLayer:", {
     event: "custom_add_to_cart_click",
     value: productPrice,
