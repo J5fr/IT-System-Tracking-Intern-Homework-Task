@@ -99,6 +99,7 @@ function handleAddToCart() {
 
   window.dataLayer = window.dataLayer || [];
 
+  // Push event to GTM dataLayer
   dataLayer.push({
     event: "custom_add_to_cart_click",
     value: parseFloat(productPrice),
@@ -106,9 +107,16 @@ function handleAddToCart() {
     item_name: productName
   });
 
+  // Send event directly to GA4 (gtag)
+  gtag('event', 'custom_add_to_cart_click', {
+    value: parseFloat(productPrice),
+    currency: 'USD',
+    item_name: productName
+  });
+
   alert("Product added to cart!");
 
-  console.log("Event pushed to dataLayer:", {
+  console.log("Event pushed to dataLayer and GA4:", {
     event: "custom_add_to_cart_click",
     value: productPrice,
     item_name: productName
@@ -118,4 +126,3 @@ function handleAddToCart() {
 
 </body>
 </html>
-  
